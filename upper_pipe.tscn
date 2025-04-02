@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://gcq43se2hesv"]
+
+[ext_resource type="Script" uid="uid://dcim31bpj2hcb" path="res://upper_pipe.gd" id="1_qrqrc"]
+[ext_resource type="Texture2D" uid="uid://cdk05356nwxvx" path="res://assets/upper_pipe.png" id="2_qrqrc"]
+
+[node name="upper_pipe" type="StaticBody2D"]
+script = ExtResource("1_qrqrc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(45, 299)
+rotation = 3.14159
+texture = ExtResource("2_qrqrc")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2(-23.9974, 41.6438)
+scale = Vector2(1.08611, 1.72215)
+polygon = PackedVector2Array(21.2663, -24.1812, 21.2663, 305.638, 106.893, 305.638, 106.893, -24.1812)

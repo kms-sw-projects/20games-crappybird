@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0j7dhbaog1fd"]
+
+[ext_resource type="Script" uid="uid://cj26rahpxre7s" path="res://pipes.gd" id="1_l4tgv"]
+[ext_resource type="PackedScene" uid="uid://dlcecyx4oal4v" path="res://pipe.tscn" id="1_og227"]
+[ext_resource type="PackedScene" uid="uid://gcq43se2hesv" path="res://upper_pipe.tscn" id="2_l4tgv"]
+
+[node name="pipes" type="StaticBody2D"]
+script = ExtResource("1_l4tgv")
+
+[node name="pipe" parent="." instance=ExtResource("1_og227")]
+position = Vector2(0, 296)
+script = null
+
+[node name="upper_pipe" parent="." instance=ExtResource("2_l4tgv")]
+position = Vector2(0, -438)
+script = null
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(0, -24)
+scale = Vector2(1.10119, 1.10119)
+polygon = PackedVector2Array(0, 128, 82.6378, 127.135, 82.6378, 296.043, 0, 296)

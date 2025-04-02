@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://chonpx00rcpkn"]
+
+[ext_resource type="Script" uid="uid://hxhe144qnxjp" path="res://player.gd" id="1_hqtel"]
+[ext_resource type="Texture2D" uid="uid://cw1tftcpu5vvj" path="res://assets/bird_dead.png" id="2_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://dq7bemrkcp6jm" path="res://assets/bird1.png" id="3_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://c1psanhmqv0ol" path="res://assets/bird2.png" id="4_dw050"]
+[ext_resource type="Texture2D" uid="uid://cxunsh4manydr" path="res://assets/bird3.png" id="5_b26j0"]
+[ext_resource type="Texture2D" uid="uid://cbo6jtemxf7lq" path="res://assets/bird4.png" id="6_n7ghd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hs0m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2hs0m")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1jxqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dw050")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b26j0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n7ghd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b26j0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dw050")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
+radius = 55.7344
+height = 211.782
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_hqtel")
+jump_height = 30.0
+jump_time_to_peak = 0.2
+jump_time_to_descent = 0.3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2hs0m")
+animation = &"flying"
+frame_progress = 0.30024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 2)
+rotation = 0.888373
+shape = SubResource("CapsuleShape2D_sh265")

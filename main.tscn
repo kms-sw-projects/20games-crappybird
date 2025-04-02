@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bn8ord0w1wcmr"]
+
+[ext_resource type="Script" uid="uid://cstlco5w1n3cg" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://d3bjugusaoljg" path="res://background.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://cd11s8fvcd86x" path="res://player_camera.gd" id="3_7mycd"]
+[ext_resource type="PackedScene" uid="uid://chonpx00rcpkn" path="res://player.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bfnsgcdhy7ad1" path="res://floor.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://gfxm3dho1ud7" path="res://hud.tscn" id="8_5vw27"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_ig7tw")
+
+[node name="Background" parent="." instance=ExtResource("2_0xm2m")]
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+position = Vector2(0, 1)
+anchor_mode = 0
+zoom = Vector2(1.8, 1.8)
+script = ExtResource("3_7mycd")
+
+[node name="Player" parent="." instance=ExtResource("3_h2yge")]
+physics_interpolation_mode = 1
+position = Vector2(210, 139)
+scale = Vector2(0.4, 0.4)
+input_pickable = true
+
+[node name="Floor1" parent="." instance=ExtResource("4_1bvp3")]
+position = Vector2(3, 584)
+
+[node name="HUD" parent="." instance=ExtResource("8_5vw27")]
+z_index = 1
+position = Vector2(-173, -129)
+
+[node name="PipeTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="hit_obstacle" from="Player" to="." method="game_over"]
+[connection signal="resetGame" from="HUD" to="." method="resetGame"]
+[connection signal="startGame" from="HUD" to="." method="start_game"]
+[connection signal="timeout" from="PipeTimer" to="." method="_on_pipe_timer_timeout"]
